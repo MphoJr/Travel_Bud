@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Travel_Bud.Models.Route>
+
+@{
+    ViewData["Title"] = "Available Buses";
+}
+
+<h2>Available Buses</h2>
+
+@if (!Model.Any())
+{
+    <p>No buses found for this route.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Bus</th>
+                <th>Operator</th>
+                <th>Departure</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var route in Model)
+            {
+                <tr>
+                    <td>@route.Bus.BusName</td>
+                    <td>@route.Bus.Operator</td>
+                    <td>@route.DepartureTime</td>
+                    <td>@route.Price</td>
+                    <td>
+                        <a asp-action="Book" asp-route-id="@route.RouteId">Book</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

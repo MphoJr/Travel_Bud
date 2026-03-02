@@ -1,0 +1,20 @@
+﻿@model Travel_Bud.Models.Bookings
+
+@{
+    ViewData["Title"] = "Confirm Booking";
+}
+
+<h2>Confirm Booking</h2>
+
+<div>
+    <p><strong>Passenger Name:</strong> @Model.PassengerName</p>
+    <p><strong>Route:</strong> @Model.Route.StartLocation → @Model.Route.Destination</p>
+    <p><strong>Bus:</strong> @Model.Route.Bus.BusName</p>
+    <p><strong>Operator:</strong> @Model.Route.Bus.Operator</p>
+    <p><strong>Departure:</strong> @Model.Route.DepartureTime</p>
+    <p><strong>Price:</strong> @Model.Route.Price</p>
+</div>
+
+<form asp-action="Success" method="get">
+    <button type="submit">Finish</button>
+</form>

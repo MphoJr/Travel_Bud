@@ -1,0 +1,26 @@
+﻿@model Travel_Bud.Models.Route
+
+@{
+    ViewData["Title"] = "Book Bus";
+}
+
+<h2>Book Bus</h2>
+
+<div>
+    <p><strong>Bus:</strong> @Model.Bus.BusName</p>
+    <p><strong>Operator:</strong> @Model.Bus.Operator</p>
+    <p><strong>Route:</strong> @Model.StartLocation → @Model.Destination</p>
+    <p><strong>Departure:</strong> @Model.DepartureTime</p>
+    <p><strong>Price:</strong> @Model.Price</p>
+</div>
+
+<form asp-action="ConfirmBooking" method="post">
+    <input type="hidden" name="routeId" value="@Model.RouteId" />
+
+    <div>
+        <label>Passenger Name:</label>
+        <input type="text" name="passengerName" required />
+    </div>
+
+    <button type="submit">Confirm Booking</button>
+</form>

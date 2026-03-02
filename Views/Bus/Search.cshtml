@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Search Buses";
+}
+
+<form asp-action="Search" method="get">
+    <label>Current Location:</label>
+    <input type="text" name="startLocation" required />
+
+    <label>Destination:</label>
+    <input type="text" name="destination" required />
+
+    <button type="submit">Find Buses</button>
+</form>
