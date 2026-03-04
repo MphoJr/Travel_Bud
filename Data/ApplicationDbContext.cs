@@ -14,5 +14,7 @@ namespace Travel_Bud.Data
         public DbSet<Travel_Bud.Models.Route> Routes { get; set; }
         public DbSet<Travel_Bud.Models.Bookings> Bookings { get; set; }
 
+        public DbSet<Travel_Bud.Models.Admin> Admins { get; set; }  
+
     }
 }
