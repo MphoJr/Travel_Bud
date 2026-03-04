@@ -1,4 +1,6 @@
-﻿namespace Travel_Bud.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Travel_Bud.Models
 {
     public class Route
     {
@@ -6,6 +8,8 @@
         public string StartLocation { get; set; }
         public string Destination { get; set; }
         public TimeSpan DepartureTime { get; set; }
+
+        [Precision(18, 2)]
         public decimal Price { get; set; }
         public int BusId { get; set; }
         public Bus Bus { get; set; }
