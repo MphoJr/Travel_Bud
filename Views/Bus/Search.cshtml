@@ -1,13 +1,59 @@
-﻿@{
+﻿@model IEnumerable<Travel_Bud.Models.Route>
+
+@{
     ViewData["Title"] = "Search Buses";
 }
 
+<h2>Search Buses</h2>
+
 <form asp-action="Search" method="get">
-    <label>Current Location:</label>
-    <input type="text" name="startLocation" required />
-
-    <label>Destination:</label>
-    <input type="text" name="destination" required />
-
+    <div>
+        <label>Current Location:</label>
+        <input type="text" name="startLocation" required />
+    </div>
+    <div>
+        <label>Destination:</label>
+        <input type="text" name="destination" required />
+    </div>
+    <div>
+        <label>Travel Date:</label>
+        <input type="date" name="travelDate" min="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+    </div>
     <button type="submit">Find Buses</button>
 </form>
+
+<hr />
+
+@if (Model != null && Model.Any())
+{
+    <h3>Available Buses</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Bus</th>
+                <th>Operator</th>
+                <th>Departure</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var route in Model)
+            {
+                <tr>
+                    <td>@route.Bus.BusName</td>
+                    <td>@route.Bus.Operator</td>
+                    <td>@route.DepartureTime</td>
+                    <td>@route.Price</td>
+                    <td>
+                        <a asp-action="Book" asp-route-id="@route.RouteId">Book</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No buses found yet. Please search above.</p>
+}

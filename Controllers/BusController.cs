@@ -26,6 +26,28 @@ namespace Travel_Bud.Controllers
         {
             return View();
         }
+        [HttpGet]
+        [HttpGet]
+        public IActionResult Search(string startLocation, string destination, DateTime? travelDate)
+        {
+            if (string.IsNullOrEmpty(startLocation) || string.IsNullOrEmpty(destination) || travelDate == null)
+            {
+                // No search yet, just show empty list
+                return View(new List<Travel_Bud.Models.Route>());
+            }
+
+            var buses = _context.Routes
+                .Where(r => r.StartLocation == startLocation
+                         && r.Destination == destination
+                         && travelDate.Value.Date == travelDate.Value.Date) // match date (see explanation)
+                .Include(r => r.Bus)
+                .ToList();
+
+            return View(buses);
+        }
+
+
+
 
         // GET: Results after search
         [HttpGet]
