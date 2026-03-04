@@ -1,12 +1,4 @@
-﻿@model IEnumerable<Travel_Bud.Models.Bookings>
-@{
-    ViewData["Title"] = "Admin Dashboard";
-    var routes = ViewBag.Routes as List<Travel_Bud.Models.Route>;
-}
-
-<h2>Admin Dashboard</h2>
-
-<h3>Bookings</h3>
+﻿<h3>Bookings</h3>
 <table>
     <thead>
         <tr>
@@ -15,6 +7,7 @@
             <th>Bus</th>
             <th>Departure</th>
             <th>Price</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -26,32 +19,41 @@
                 <td>@booking.Route.Bus.BusName</td>
                 <td>@booking.Route.DepartureTime</td>
                 <td>@booking.Route.Price</td>
+                <td>
+                    <a asp-action="EditBooking" asp-route-id="@booking.BookingId">Edit</a> |
+                    <a asp-action="DeleteBooking" asp-route-id="@booking.BookingId">Delete</a>
+                </td>
             </tr>
         }
     </tbody>
 </table>
 
-<h3>Add New Route</h3>
-<form asp-action="AddRoute" method="post">
-    <div>
-        <label>Start Location:</label>
-        <input type="text" name="StartLocation" required />
-    </div>
-    <div>
-        <label>Destination:</label>
-        <input type="text" name="Destination" required />
-    </div>
-    <div>
-        <label>Departure Time:</label>
-        <input type="datetime-local" name="DepartureTime" required />
-    </div>
-    <div>
-        <label>Price:</label>
-        <input type="number" step="0.01" name="Price" required />
-    </div>
-    <div>
-        <label>Bus Id:</label>
-        <input type="number" name="BusId" required />
-    </div>
-    <button type="submit">Add Route</button>
-</form>
+<h3>Routes</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Start</th>
+            <th>Destination</th>
+            <th>Departure</th>
+            <th>Price</th>
+            <th>Bus</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var route in ViewBag.Routes)
+        {
+            <tr>
+                <td>@route.StartLocation</td>
+                <td>@route.Destination</td>
+                <td>@route.DepartureTime</td>
+                <td>@route.Price</td>
+                <td>@route.Bus.BusName</td>
+                <td>
+                    <a asp-action="EditRoute" asp-route-id="@route.RouteId">Edit</a> |
+                    <a asp-action="DeleteRoute" asp-route-id="@route.RouteId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,30 @@
+﻿@model Travel_Bud.Models.Route
+
+<h2>Edit Route</h2>
+
+<form asp-action="EditRoute" method="post">
+    <input type="hidden" asp-for="RouteId" />
+
+    <div>
+        <label>Start Location:</label>
+        <input asp-for="StartLocation" />
+    </div>
+    <div>
+        <label>Destination:</label>
+        <input asp-for="Destination" />
+    </div>
+    <div>
+        <label>Departure Time:</label>
+        <input asp-for="DepartureTime" type="datetime-local" />
+    </div>
+    <div>
+        <label>Price:</label>
+        <input asp-for="Price" type="number" step="0.01" />
+    </div>
+    <div>
+        <label>Bus Id:</label>
+        <input asp-for="BusId" />
+    </div>
+
+    <button type="submit">Save</button>
+</form>

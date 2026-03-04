@@ -55,5 +55,60 @@ namespace Travel_Bud.Controllers
             _context.SaveChanges();
             return RedirectToAction("Dashboard");
         }
+        public IActionResult EditRoute(int id)
+        {
+            var route = _context.Routes.Find(id);
+            if (route == null) return NotFound();
+            return View(route);
+        }
+
+        [HttpPost]
+        public IActionResult EditRoute(Travel_Bud.Models.Route route)
+        {
+            _context.Routes.Update(route);
+            _context.SaveChanges();
+            return RedirectToAction("Dashboard");
+        }
+
+        // Delete Route
+        public IActionResult DeleteRoute(int id)
+        {
+            var route = _context.Routes.Find(id);
+            if (route == null) return NotFound();
+
+            _context.Routes.Remove(route);
+            _context.SaveChanges();
+            return RedirectToAction("Dashboard");
+        }
+
+        // Edit Booking
+        public IActionResult EditBooking(int id)
+        {
+            var booking = _context.Bookings.Include(b => b.Route).FirstOrDefault(b => b.BookingId == id);
+            if (booking == null) return NotFound();
+            return View(booking);
+        }
+
+        [HttpPost]
+        public IActionResult EditBooking(Bookings booking)
+        {
+            _context.Bookings.Update(booking);
+            _context.SaveChanges();
+            return RedirectToAction("Dashboard");
+        }
+
+        // Delete Booking
+        public IActionResult DeleteBooking(int id)
+        {
+            var booking = _context.Bookings.Find(id);
+            if (booking == null) return NotFound();
+
+            _context.Bookings.Remove(booking);
+            _context.SaveChanges();
+            return RedirectToAction("Dashboard");
+        }
+
+
+
     }
 }

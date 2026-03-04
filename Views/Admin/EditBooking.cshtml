@@ -1,0 +1,18 @@
+﻿@model Travel_Bud.Models.Bookings
+
+<h2>Edit Booking</h2>
+
+<form asp-action="EditBooking" method="post">
+    <input type="hidden" asp-for="BookingId" />
+
+    <div>
+        <label>Passenger Name:</label>
+        <input asp-for="PassengerName" />
+    </div>
+    <div>
+        <label>Route Id:</label>
+        <input asp-for="RouteId" />
+    </div>
+
+    <button type="submit">Save</button>
+</form>
