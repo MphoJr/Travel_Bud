@@ -48,6 +48,15 @@ namespace Travel_Bud.Controllers
         }
 
         // Add Route
+
+        public IActionResult AddRoute()
+        {
+            var buses = _context.Buses.ToList();
+            ViewBag.Buses = buses;
+            return View();
+        }
+
+
         [HttpPost]
         public IActionResult AddRoute(Travel_Bud.Models.Route route) // Specify the correct Route type
         {

@@ -26,7 +26,7 @@ namespace Travel_Bud.Controllers
         {
             return View();
         }
-        [HttpGet]
+        
         [HttpGet]
         public IActionResult Search(string startLocation, string destination, DateTime? travelDate)
         {
