@@ -47,6 +47,20 @@ namespace Travel_Bud.Controllers
             return View(bookings);
         }
 
+        public IActionResult Bookings()
+        {
+            if (HttpContext.Session.GetString("AdminUser") == null)
+                return RedirectToAction("Login");
+
+            var bookings = _context.Bookings
+                .Include(b => b.Route)
+                .ThenInclude(r => r.Bus)
+                .ToList();
+
+            return View(bookings);
+        }
+
+
         // Add Route
 
         public IActionResult AddRoute()
