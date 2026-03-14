@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Travel_Bud.Models.Bookings>
+
+@{
+    ViewData["Title"] = "Search Bookings";
+}
+
+<h2>Search Bookings</h2>
+
+<form asp-action="SearchBookings" method="get" class="mb-3">
+    <div class="row">
+        <div class="col-md-4">
+            <input type="text" name="passengerName" class="form-control" placeholder="Passenger Name" />
+        </div>
+        <div class="col-md-4">
+            <input type="text" name="destination" class="form-control" placeholder="Destination" />
+        </div>
+        <div class="col-md-4">
+            <input type="date" name="travelDate" class="form-control" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Search</button>
+</form>
+
+@if (!Model.Any())
+{
+    <p>No bookings found.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Passenger</th>
+                <th>Route</th>
+                <th>Destination</th>
+                <th>Departure</th>
+                <th>Bus</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.PassengerName</td>
+                    <td>@booking.Route.StartLocation</td>
+                    <td>@booking.Route.Destination</td>
+                    <td>@booking.Route.DepartureTime.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@booking.Route.Bus.BusName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

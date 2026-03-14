@@ -60,6 +60,27 @@ namespace Travel_Bud.Controllers
             return View(bookings);
         }
 
+        public IActionResult SearchBookings(string passengerName, string destination, DateTime? travelDate)
+        {
+            if (string.IsNullOrEmpty(passengerName) && string.IsNullOrEmpty(destination) && travelDate == null)
+            {
+                // No search yet, just show empty list
+                return View(new List<Bookings>());
+            }
+
+            var bookings = _context.Bookings
+                .Include(b => b.Route)
+                .ThenInclude(r => r.Bus)
+                .Where(b =>
+                    (string.IsNullOrEmpty(passengerName) || b.PassengerName.Contains(passengerName)) &&
+                    (string.IsNullOrEmpty(destination) || b.Route.Destination.Contains(destination)) &&
+                    (travelDate == null || b.Route.DepartureTime.Date == travelDate.Value.Date)
+                )
+                .ToList();
+
+            return View(bookings);
+        }
+
 
         // Add Route
 

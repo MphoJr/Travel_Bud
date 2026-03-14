@@ -53,35 +53,6 @@
     <!-- Main Content -->
   
 
-<h3>Bookings</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Passenger</th>
-            <th>Route</th>
-            <th>Bus</th>
-            <th>Departure</th>
-            <th>Price</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var booking in Model)
-        {
-            <tr>
-                <td>@booking.PassengerName</td>
-                <td>@booking.Route.StartLocation → @booking.Route.Destination</td>
-                <td>@booking.Route.Bus.BusName</td>
-                <td>@booking.Route.DepartureTime</td>
-                <td>@booking.Route.Price</td>
-                <td>
-                    <a asp-action="EditBooking" asp-route-id="@booking.BookingId">Edit</a> |
-                    <a asp-action="DeleteBooking" asp-route-id="@booking.BookingId">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
 
 <h3>Routes</h3>
 <table>
