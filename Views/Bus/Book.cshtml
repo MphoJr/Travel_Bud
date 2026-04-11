@@ -6,7 +6,7 @@
 
 <h2>Book Bus</h2>
 
-<div>
+<div class="booking-details">
     <p><strong>Bus:</strong> @Model.Bus.BusName</p>
     <p><strong>Operator:</strong> @Model.Bus.Operator</p>
     <p><strong>Route:</strong> @Model.StartLocation → @Model.Destination</p>
@@ -14,7 +14,7 @@
     <p><strong>Price:</strong> @Model.Price</p>
 </div>
 
-<form asp-action="ConfirmBooking" method="post">
+<form asp-action="ConfirmBooking" method="post" class="booking-form">
     <input type="hidden" name="routeId" value="@Model.RouteId" />
 
     <div>
@@ -24,3 +24,71 @@
 
     <button type="submit">Confirm Booking</button>
 </form>
+
+
+<style>
+
+    /* Booking Details Box */
+    .booking-details {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-family: Arial, sans-serif;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+        .booking-details p {
+            margin: 8px 0;
+            font-size: 1em;
+        }
+
+        .booking-details strong {
+            color: #343a40;
+        }
+
+    /* Booking Form */
+    .booking-form {
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        font-family: Arial, sans-serif;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+        .booking-form div {
+            margin-bottom: 15px;
+        }
+
+        .booking-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .booking-form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Confirm Button */
+        .booking-form button {
+            background: #f8c146;
+            color: #343a40;
+            padding: 10px 20px;
+            border: none;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+            .booking-form button:hover {
+                background: #ffc107;
+            }
+</style>
