@@ -3,8 +3,22 @@
 @{
     ViewData["Title"] = "Search Buses";
 }
-
+@{Layout = "S_Layout";}
 <form asp-action="Search" method="get" class="booking-form">
+    <header>
+        <nav class="navbar">
+            <div class="logo">Travel Bud</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Routes</a></li>
+                <li><a href="#">Bookings</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
     <section class="hero">
         <div class="overlay"></div>
           <div class="hero-content">
@@ -148,4 +162,92 @@ else
         .btn:hover {
             background: #ffc107;
         }
+
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+        /* Table Header */
+        table thead {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+            table thead th {
+                padding: 12px;
+                text-align: left;
+                font-weight: bold;
+            }
+
+        /* Table Rows */
+        table tbody tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+            table tbody tr:nth-child(even) {
+                background-color: #f1f1f1;
+            }
+
+        table tbody td {
+            padding: 10px;
+        }
+
+            /* Book Button Link */
+            table tbody td a {
+                display: inline-block;
+                padding: 6px 12px;
+                background-color: #f8c146;
+                color: #343a40;
+                text-decoration: none;
+                border-radius: 4px;
+                font-weight: bold;
+                transition: background-color 0.3s;
+            }
+
+                table tbody td a:hover {
+                    background-color: #ffc107;
+                    color: #212529;
+                }
+
+    /* Navbar */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #343a40;
+        padding: 15px 30px;
+    }
+
+        .navbar .logo {
+            color: #fff;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+            .navbar .nav-links li {
+                margin-left: 20px;
+            }
+
+            .navbar .nav-links a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .navbar .nav-links a:hover {
+                    color: #f8c146;
+                }
 </style>
