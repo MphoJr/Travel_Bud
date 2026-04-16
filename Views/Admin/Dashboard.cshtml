@@ -14,7 +14,7 @@
         }
 
         .sidebar {
-            width: 220px;
+            width: 150px;
             height: 100vh;
             background-color: #343a40;
             color: white;
@@ -40,59 +40,55 @@
         }
 
         /* General Table Styling */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            border-radius: 6px;
-            overflow: hidden;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+}
 
-            /* Table Header */
-            table thead {
-                background-color: #343a40;
-                color: #fff;
-            }
+/* Table Header */
+table thead {
+    background-color: #343a40;
+    color: #fff;
+}
+table thead th {
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+}
 
-                table thead th {
-                    padding: 12px;
-                    text-align: left;
-                    font-weight: bold;
-                }
+/* Table Rows */
+table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+table tbody tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+table tbody td {
+    padding: 10px;
+}
 
-            /* Table Rows */
-            table tbody tr {
-                border-bottom: 1px solid #ddd;
-            }
-
-                table tbody tr:nth-child(even) {
-                    background-color: #f1f1f1;
-                }
-
-            table tbody td {
-                padding: 10px;
-            }
-
-                /* Action Links */
-                table tbody td a {
-                    display: inline-block;
-                    padding: 6px 12px;
-                    background-color: #f8c146;
-                    color: #343a40;
-                    text-decoration: none;
-                    border-radius: 4px;
-                    font-weight: bold;
-                    transition: background-color 0.3s;
-                    margin-right: 5px;
-                }
-
-                    table tbody td a:hover {
-                        background-color: #ffc107;
-                        color: #212529;
-                    }
+/* Action Links */
+table tbody td a {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #f8c146;
+    color: #343a40;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-right: 5px;
+}
+table tbody td a:hover {
+    background-color: #ffc107;
+    color: #212529;
+}
     </style>
 </head>
 <body>
@@ -107,36 +103,37 @@
 
     <!-- Main Content -->
   
+<div class="content">
 
 
-<h3>Routes</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Start</th>
-            <th>Destination</th>
-            <th>Departure</th>
-            <th>Price</th>
-            <th>Bus</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var route in ViewBag.Routes)
-        {
+    <h3>Routes</h3>
+    <table>
+        <thead>
             <tr>
-                <td>@route.StartLocation</td>
-                <td>@route.Destination</td>
-                <td>@route.DepartureTime</td>
-                <td>@route.Price</td>
-                <td>@route.Bus.BusName</td>
-                <td>
-                    <a asp-action="EditRoute" asp-route-id="@route.RouteId">Edit</a> |
-                    <a asp-action="DeleteRoute" asp-route-id="@route.RouteId">Delete</a>
-                </td>
+                <th>Start</th>
+                <th>Destination</th>
+                <th>Departure</th>
+                <th>Price</th>
+                <th>Bus</th>
+                <th>Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var route in ViewBag.Routes)
+            {
+                <tr>
+                    <td>@route.StartLocation</td>
+                    <td>@route.Destination</td>
+                    <td>@route.DepartureTime</td>
+                    <td>@route.Price</td>
+                    <td>@route.Bus.BusName</td>
+                    <td>
+                        <a asp-action="EditRoute" asp-route-id="@route.RouteId">Edit</a> |
+                        <a asp-action="DeleteRoute" asp-route-id="@route.RouteId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 </body>
-<
