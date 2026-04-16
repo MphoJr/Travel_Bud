@@ -74,7 +74,7 @@ namespace Travel_Bud.Controllers
                 .Where(b =>
                     (string.IsNullOrEmpty(passengerName) || b.PassengerName.Contains(passengerName)) &&
                     (string.IsNullOrEmpty(destination) || b.Route.Destination.Contains(destination)) &&
-                    (travelDate == null || travelDate.Value.TimeOfDay == b.Route.DepartureTime)
+                    (travelDate == null || b.Route.DepartureTime.Date == travelDate.Value.Date)
                 )
                 .ToList();
 

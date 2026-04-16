@@ -7,7 +7,7 @@ namespace Travel_Bud.Models
         public int RouteId { get; set; }
         public string StartLocation { get; set; }
         public string Destination { get; set; }
-        public TimeSpan DepartureTime { get; set; }
+        public DateTime DepartureTime { get; set; }
 
         [Precision(18, 2)]
         public decimal Price { get; set; }

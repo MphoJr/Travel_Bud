@@ -14,7 +14,7 @@
         }
 
         .sidebar {
-            width: 150px;
+            width: 220px;
             height: 100vh;
             background-color: #343a40;
             color: white;
@@ -105,8 +105,10 @@ table tbody td a:hover {
   
 <div class="content">
 
-
-    <h3>Routes</h3>
+        <h3 class="d-flex justify-content-between align-items-center">
+            Routes
+            <a asp-action="AddRoute" class="btn btn-success">➕ Add Route</a>
+        </h3>
     <table>
         <thead>
             <tr>
