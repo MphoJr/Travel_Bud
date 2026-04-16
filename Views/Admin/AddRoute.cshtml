@@ -1,49 +1,121 @@
 ﻿@model Travel_Bud.Models.Route
 
 @{
+
     ViewData["Title"] = "Add Route";
     var buses = ViewBag.Buses as List<Travel_Bud.Models.Bus>;
+
+    Layout = null;
 }
 
-<h2>Add New Route</h2>
+<div class="add-route-form">
+    <h2>Add New Route</h2>
 
-<form asp-action="AddRoute" method="post">
-    <div class="form-group">
-        <label asp-for="StartLocation"></label>
-        <input asp-for="StartLocation" class="form-control" />
-        <span asp-validation-for="StartLocation" class="text-danger"></span>
-    </div>
+    <form asp-action="AddRoute" method="post">
+        <div class="form-group">
+            <label asp-for="StartLocation"></label>
+            <input asp-for="StartLocation" class="form-control" />
+            <span asp-validation-for="StartLocation" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Destination"></label>
-        <input asp-for="Destination" class="form-control" />
-        <span asp-validation-for="Destination" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="Destination"></label>
+            <input asp-for="Destination" class="form-control" />
+            <span asp-validation-for="Destination" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="DepartureTime"></label>
-        <input asp-for="DepartureTime" type="datetime-local" class="form-control" />
-        <span asp-validation-for="DepartureTime" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="DepartureTime"></label>
+            <input asp-for="DepartureTime" type="datetime-local" class="form-control" />
+            <span asp-validation-for="DepartureTime" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Price"></label>
-        <input asp-for="Price" type="number" step="0.01" class="form-control" />
-        <span asp-validation-for="Price" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" type="number" step="0.01" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="BusId">Bus</label>
-        <select asp-for="BusId" class="form-control">
-            <option value="">-- Select Bus --</option>
-            @foreach (var bus in buses)
-            {
-                <option value="@bus.BusId">@bus.BusName (@bus.Operator)</option>
+        <div class="form-group">
+            <label asp-for="BusId">Bus</label>
+            <select asp-for="BusId" class="form-control">
+                <option value="">-- Select Bus --</option>
+                @foreach (var bus in buses)
+                {
+                    <option value="@bus.BusId">@bus.BusName (@bus.Operator)</option>
+                }
+            </select>
+            <span asp-validation-for="BusId" class="text-danger"></span>
+        </div>
+
+        <button type="submit">Add Route</button>
+        <a asp-action="Dashboard" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+        <style>
+
+    /* Add Route Form Container */
+    .add-route-form {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 25px;
+        border-radius: 8px;
+        max-width: 600px;
+        margin: 20px auto;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        font-family: Arial, sans-serif;
+    }
+
+        /* Form Headings */
+        .add-route-form h2 {
+            margin-bottom: 20px;
+            color: #343a40;
+            text-align: center;
+        }
+
+        /* Form Groups */
+        .add-route-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .add-route-form label {
+            font-weight: bold;
+            color: #343a40;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .add-route-form input,
+        .add-route-form select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Buttons */
+        .add-route-form button {
+            background: #f8c146;
+            color: #343a40;
+            padding: 10px 20px;
+            border: none;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-right: 10px;
+        }
+
+            .add-route-form button:hover {
+                background: #ffc107;
             }
-        </select>
-        <span asp-validation-for="BusId" class="text-danger"></span>
-    </div>
 
-    <button type="submit" class="btn btn-primary">Add Route</button>
-    <a asp-action="Dashboard" class="btn btn-secondary">Cancel</a>
-</form>
+        .add-route-form .btn-secondary {
+            background: #343a40;
+            color: #fff;
+        }
+
+            .add-route-form .btn-secondary:hover {
+                background: #495057;
+            }
+</style>
